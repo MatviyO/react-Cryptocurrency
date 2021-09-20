@@ -1,18 +1,23 @@
 import React from 'react';
-import {Avatar, Button, Typography} from "antd";
+import {Avatar, Button, Menu, Typography} from "antd";
 import {Link} from 'react-router-dom';
+import icon from '../images/cryptocurrency.png'
+import {HomeOutlined} from "@ant-design/icons";
 
 const Navbar = () => {
     return (
         <div className="nav-container">
             <div className="logo-container">
-                <Avatar />
+                <Avatar src={icon} size="large" />
                 <Typography.Title level={2} className="logo">
                     <Link to="/">Cryptoverse</Link>
                 </Typography.Title>
-                <Button className="menu-control-container">
+                <Menu theme="dark">
+                    <Menu.Item icon={<HomeOutlined/>}></Menu.Item>
+                </Menu>
+                {/*<Button className="menu-control-container">*/}
 
-                </Button>
+                {/*</Button>*/}
             </div>
         </div>
     );
