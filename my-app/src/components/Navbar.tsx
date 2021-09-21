@@ -13,11 +13,10 @@ const Navbar = () => {
                     <Link to="/">Cryptoverse</Link>
                 </Typography.Title>
                 <Menu theme="dark">
-                    <Menu.Item icon={<HomeOutlined/>}></Menu.Item>
+                    <Menu.Item icon={<HomeOutlined/>}>
+                        <Link to="/">Home</Link>
+                    </Menu.Item>
                 </Menu>
-                {/*<Button className="menu-control-container">*/}
-
-                {/*</Button>*/}
             </div>
         </div>
     );
