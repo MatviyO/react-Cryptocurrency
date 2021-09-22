@@ -50,6 +50,7 @@ a:hover{
     padding: 20px;
     align-items: center;
     width: 100%;
+    flex-direction: column;
 }
 .logo{
     margin:0 0 0 15px;
