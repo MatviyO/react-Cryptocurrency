@@ -1,11 +1,13 @@
 import React, {FC} from 'react';
 import {Col, Row, Statistic, Typography} from 'antd';
+import {useGetCryptosQuery} from "../services/cryptoApi";
 
 const {Title} = Typography
 
 interface Props {
 }
 const Home: FC<Props> = ({}) => {
+    const {data, isFetching} = useGetCryptosQuery()
     return (
         <>
             <Title level={2} className="heading">Global Crypto Stats</Title>
