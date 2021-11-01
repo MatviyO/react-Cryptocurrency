@@ -7,5 +7,8 @@ export interface ICoin {
     symbol: string;
     totalSupply: number
     type: string
-    volume: number
+    volume: number;
+    iconUrl: string;
+    marketCap: number;
+    change: number;
 }

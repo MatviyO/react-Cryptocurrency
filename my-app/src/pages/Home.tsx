@@ -10,7 +10,7 @@ const {Title} = Typography
 interface Props {
 }
 const Home: FC<Props> = ({}): JSX.Element => {
-    const {data, isFetching } = useGetCryptosQuery(null);
+    const {data, isFetching } = useGetCryptosQuery(10);
     const globalStats = data?.data?.stats;
 
     if(isFetching) return <p>'Loading...'</p>
