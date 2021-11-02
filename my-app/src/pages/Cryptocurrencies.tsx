@@ -21,9 +21,9 @@ const Cryptocurrencies: FC<Props> = ({simpified}) => {
     if(isFetching) return <p>Loading...</p>
     return (
         <>
-            <div className="search-crypto">
-                <Input placeholder="Search Cryptocurrencies" onChange={(e) => setSearchTerm(e.target.value)} />
-            </div>
+            { !simpified &&  (<div className="search-crypto">
+                <Input placeholder="Search Cryptocurrencies" onChange={(e) => setSearchTerm(e.target.value)}/>
+            </div>)}
             <Row gutter={[32,32]} className="crypto-card-container">
                 {cryptos.length && cryptos?.map((currency: ICoin) => (
                     <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.id}>
