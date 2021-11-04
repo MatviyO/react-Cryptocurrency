@@ -25,11 +25,11 @@ const Cryptocurrencies: FC<Props> = ({simpified}) => {
                 <Input placeholder="Search Cryptocurrencies" onChange={(e) => setSearchTerm(e.target.value)}/>
             </div>)}
             <Row gutter={[32,32]} className="crypto-card-container">
-                {cryptos.length && cryptos?.map((currency: ICoin) => (
+                {cryptos?.length && cryptos?.map((currency: ICoin) => (
                     <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.id}>
                         <Link  to={`/crypto/${currency.id}`}>
                             <Card title={`${currency.id}. ${currency.name}`} hoverable
-                                  extra={<img  className="crypto-image" src={currency.iconUrl}/>}
+                                  extra={<img  className="crypto-image" src={currency.iconUrl} alt={currency.name}/>}
                             >
                                 <p>Price: {millify(Number(currency.price))}</p>
                                 <p>Market Cap: {millify(Number(currency.marketCap))}</p>
