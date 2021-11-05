@@ -4,6 +4,7 @@ import {Avatar, Card, Col, Row, Select, Typography} from "antd";
 import moment from "moment";
 import {useGetCryptosQuery} from "../services/cryptoApi";
 import {ICoin} from "../core/interfaces/ICoin";
+import {INews} from "../core/interfaces/INews";
 const  {Title, Text} = Typography;
 const {Option} = Select
 
@@ -27,7 +28,7 @@ const News: FC<Props> = ({simpified}) => {
                         showSearch className="select-news"
                         placeholder="Select a Crypto"
                         optionFilterProp="children"
-                        onChange={(value) => console.log(value)}
+                        onChange={(value: string) => setNewsCategory(value)}
                         filterOption={(input, option) => option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                         <Option value="Cryptocurrency">Cryptocurrency</Option>
                         {cryptoList?.data?.coins.map((coin: ICoin) => (
@@ -36,7 +37,7 @@ const News: FC<Props> = ({simpified}) => {
                     </Select>
                 </Col>
             )}
-            {cryptoNews.value.map((news: any, index: number) => (
+            {cryptoNews.value.map((news: INews, index: number) => (
                 <Col xs={24} sm={12} lg={8} key={index}>
                     <Card  hoverable className="news-card">
                         <a href={news.url} target="_blank" rel="noreferrer">
@@ -45,7 +46,7 @@ const News: FC<Props> = ({simpified}) => {
                                 <img style={{maxWidth: '200px', maxHeight: '100px'}} src={news?.image?.thumbnail?.contentUrl || defaultImage} alt={news.name}/>
                             </div>
                                 <p>
-                                    {news.description > 100 ? `${news.description.subscring(0, 100)}...` : `${news.description}`}
+                                    {news.description.length > 100 ? `${news.description.substring(0, 100)}...` : `${news.description}`}
                                 </p>
                                 <div className="provider-container">
                                     <div>
