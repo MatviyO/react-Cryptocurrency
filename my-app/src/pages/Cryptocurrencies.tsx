@@ -4,6 +4,7 @@ import {Card, Col, Input, Row} from "antd";
 import {ICoin} from "../core/interfaces/ICoin";
 import { Link } from 'react-router-dom';
 import millify from "millify";
+import Loader from "../components/Loader";
 
 interface Props {
     simpified?: boolean
@@ -18,7 +19,7 @@ const Cryptocurrencies: FC<Props> = ({simpified}) => {
         setCryptos(filteredData)
     }, [cryptoList, searchTerm])
 
-    if(isFetching) return <p>Loading...</p>
+    if (isFetching) return <Loader />;
     return (
         <>
             { !simpified &&  (<div className="search-crypto">

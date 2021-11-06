@@ -12,6 +12,7 @@ import {
 } from "@ant-design/icons";
 import HTMLReactParser from "html-react-parser";
 import LineChart from "../components/LineChart";
+import Loader from "../components/Loader";
 
 const {Title, Text} = Typography
 const {Option} = Select
@@ -21,11 +22,13 @@ interface Props {
 const CryptoDetails: FC<Props> = ({}) => {
     const {coinId} = useParams<{coinId?: string}>()
     const [timePeriod, setTimePeriod] = useState<string>('7d')
-    const { data } = useGetCryptoDetailsQuery(coinId)
+    const { data, isFetching } = useGetCryptoDetailsQuery(coinId)
     const { data: coinHistory } = useGetCryptoHystoryQuery({coinId, timePeriod})
     const cryptoDetails = data?.data?.coin;
 
     const time: Array<string> = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+
+    if (isFetching) return <Loader />;
 
     const stats = [
         { title: 'Price to USD', value: `$ ${cryptoDetails.price && millify(cryptoDetails.price)}`, icon: <DollarCircleOutlined /> },

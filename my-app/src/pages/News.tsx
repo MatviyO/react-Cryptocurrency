@@ -5,6 +5,7 @@ import moment from "moment";
 import {useGetCryptosQuery} from "../services/cryptoApi";
 import {ICoin} from "../core/interfaces/ICoin";
 import {INews} from "../core/interfaces/INews";
+import Loader from "../components/Loader";
 const  {Title, Text} = Typography;
 const {Option} = Select
 
@@ -18,8 +19,7 @@ const News: FC<Props> = ({simpified}) => {
     const [newsCategory, setNewsCategory] = useState<string>('Cryptocurrency')
     const {data: cryptoNews} = useGetCryptoNewsQuery({ newsCategory, count: simpified ? 6 : 12})
     const { data: cryptoList } = useGetCryptosQuery(100);
-    if ( !cryptoNews?.value) return <p>Loading...</p>
-
+    if (!cryptoNews?.value) return <Loader />;
     return (
         <Row gutter={[24, 24]}>
             {!simpified && (

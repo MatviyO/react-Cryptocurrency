@@ -4,6 +4,7 @@ import {useGetCryptosQuery} from "../services/cryptoApi";
 import millify from "millify";
 import { Link } from 'react-router-dom';
 import {Cryptocurrencies, News} from "./index";
+import Loader from "../components/Loader";
 
 const {Title} = Typography
 
@@ -13,7 +14,7 @@ const Home: FC<Props> = ({}): JSX.Element => {
     const {data, isFetching } = useGetCryptosQuery(10);
     const globalStats = data?.data?.stats;
 
-    if(isFetching) return <p>'Loading...'</p>
+    if (isFetching) return <Loader />;
     return (
         <>
             <Title level={2} className="heading">Global Crypto Stats</Title>
